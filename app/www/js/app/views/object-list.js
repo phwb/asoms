@@ -2,6 +2,8 @@
 /* jshint multistr: true */
 define([
     'backbone',
+    // нотификатор
+    'app/helper/notify',
     // коллекции
     'collections/cities',
     // генерация и шаблон страниц
@@ -9,6 +11,8 @@ define([
     'text!templates/offices/index.html'
 ], function (
     Backbone,
+    // нотификатор
+    notify,
     // коллекции
     Cities,
     // генерация и шаблон страниц

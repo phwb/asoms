@@ -1,10 +1,15 @@
 /* global define, require, ymaps, window */
 define([
     'backbone',
+    // нотификатор
+    'app/helper/notify',
+    // шаблоны
     'views/page',
     'text!templates/offices/map.html'
 ], function (
     Backbone,
+    // нотификатор
+    notify,
     // шаблоны
     PageView,
     mapPage
