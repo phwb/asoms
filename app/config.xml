@@ -17,7 +17,7 @@
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />              <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen" value="false" />                  <!-- all: hides the status bar at the top of the screen -->
-    <preference name="android-minSdkVersion" value="16" />          <!-- android: minimum Android SDK version ~ Android 4.0, 4.0.1, 4.0.2 ICE_CREAM_SANDWICH -->
+    <preference name="android-minSdkVersion" value="18" />          <!-- android: minimum Android SDK version ~ Android 4.0, 4.0.1, 4.0.2 ICE_CREAM_SANDWICH -->
     <preference name="android-installLocation" value="auto" />      <!-- android: where an app can be installed - defaults to internalOnly. auto or preferExternal allow the app to be installed on an SD card -->
     <preference name="target-device" value="universal" />           <!-- ios: possible values are handset, tablet, or universal -->
     <preference name="prerendered-icon" value="true" />             <!-- ios: this will cause iOS to not apply its gloss to the app's icon on the user's home screen -->

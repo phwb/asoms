@@ -14,6 +14,34 @@ define([
     var $ = Backbone.$,
         maps = {};
 
+    // функция-помощник загружает яндекс карты
+    // контекст привязан к главной вьюшке
+    // писать по нормальному не было времени
+    function ymapsLoad() {
+        this.$map.addClass('page_loader');
+        require(['ymaps'], function () {
+            this.$map.removeClass('page_loader');
+            this.renderMap();
+        }.bind(this), ymapsError.bind(this));
+    }
+
+    function ymapsError(err) {
+        var failedId = err.requireModules && err.requireModules[0];
+        var self = this;
+
+        notify.confirm({
+            message: 'Ошибка загрузки Яндекс.Карт, повторить попытку?',
+            buttons: ['Нет', 'Да'],
+            title: 'Внимание!',
+            callback: function (index) {
+                requirejs.undef(failedId);
+                if (index > 1 || index === true) {
+                    ymapsLoad.call(self);
+                }
+            }
+        });
+    }
+
     return function (params) {
         var model = params.model || false,
             callback = params.callback || $.noop,
@@ -43,16 +71,17 @@ define([
                             return this;
                         }
 
+                        // грузим "Яндекс.Карты" только тогда, когда они нужны
+                        // то есть по первому клику на кнопку "Карта"
                         if ('ymaps' in window) {
                             this.renderMap();
                         } else {
-                            // грузим "Яндекс.Карты" только тогда, когда они нужны
-                            // то есть по первому клику на кнопку "Карта"
-                            this.$map.addClass('page_loader');
+                            ymapsLoad.call(this);
+                            /*this.$map.addClass('page_loader');
                             require(['ymaps'], function () {
                                 this.$map.removeClass('page_loader');
                                 this.renderMap();
-                            }.bind(this));
+                            }.bind(this));*/
                         }
                     },
                     renderMap: function () {

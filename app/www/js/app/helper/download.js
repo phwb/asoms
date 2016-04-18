@@ -30,7 +30,6 @@ define([
     function downloadResources(cb) {
         var splash = $splash;
         var url = 'http://alfastrahoms.ru';
-        // var url = 'http://u-med.ru/local/test-api';
 
         cb = cb || function () {};
 
@@ -58,15 +57,15 @@ define([
                  * @property {Array} item.CITIES
                  */
                 regions.each(function (item) {
-                    Regions.create({
-                        id: item.ID,
-                        name: item.NAME
-                    }, {silent: true});
-
                     var cities = _(item.CITIES);
                     if (cities.isArray() === false) {
                         return this;
                     }
+
+                    Regions.create({
+                        id: item.ID,
+                        name: item.NAME
+                    }, {silent: true});
 
                     /**
                      * добавляем города в коллекцию

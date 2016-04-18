@@ -168,12 +168,42 @@ define([
             if (!map) {
                 return this;
             }
-            this.map.setCenter(map.coords.value, map.zoom);
+            ymaps.ready(function () {
+                this.map.setCenter(map.coords.value, map.zoom);
 
-            this.city = city;
-            this.addAll();
+                this.city = city;
+                this.addAll();
+            }.bind(this));
         }
     });
+
+    // функция-помощник загружает яндекс карты
+    // контекст привязан к главной вьюшке
+    // писать по нормальному не было времени
+    function ymapsLoad() {
+        this.$map.addClass('page_loader');
+        require(['ymaps'], function () {
+            this.$map.removeClass('page_loader');
+            this.renderMap();
+        }.bind(this), ymapsError.bind(this));
+    }
+
+    function ymapsError(err) {
+        var failedId = err.requireModules && err.requireModules[0];
+        var self = this;
+
+        notify.confirm({
+            message: 'Ошибка загрузки Яндекс.Карт, повторить попытку?',
+            buttons: ['Нет', 'Да'],
+            title: 'Внимание!',
+            callback: function (index) {
+                requirejs.undef(failedId);
+                if (index > 1 || index === true) {
+                    ymapsLoad.call(self);
+                }
+            }
+        });
+    }
 
     var objectList = {};
     return function (params) {
@@ -217,16 +247,17 @@ define([
                                 this.$list.hide();
                                 this.$map.show();
 
+                                // грузим "Яндекс.Карты" только тогда, когда они нужны
+                                // то есть по первому клику на кнопку "Карта"
                                 if ('ymaps' in window) {
                                     this.renderMap();
                                 } else {
-                                    // грузим "Яндекс.Карты" только тогда, когда они нужны
-                                    // то есть по первому клику на кнопку "Карта"
-                                    this.$map.addClass('page_loader');
+                                    ymapsLoad.call(this);
+                                    /*this.$map.addClass('page_loader');
                                     require(['ymaps'], function () {
                                         this.$map.removeClass('page_loader');
                                         this.renderMap();
-                                    }.bind(this));
+                                    }.bind(this));*/
                                 }
                                 break;
                         }

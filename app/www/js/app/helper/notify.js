@@ -74,7 +74,6 @@ define([
                 params = _.extend(defaults, parameters);
             }
 
-            console.log(isWindows);
             if (isWindows) {
                 params.callback(confirm(params.message));
             } else {
