@@ -1,0 +1,76 @@
+<h2 class="h1"><%= name %></h2>
+
+<hr class="separator">
+
+<% if (obj.address) { %>
+<div class="line">
+    <div class="label">Адрес:</div><%= address %>
+</div>
+<% } %>
+
+<% if (_(props).isArray() && !_(props).isEmpty()) { %>
+    <%
+    _(props).each(function(item) {
+        var isEmptyValue = !!item.html || !!item.text;
+        if (!isEmptyValue) {
+            return this;
+        }
+        %>
+        <div class="line">
+            <div class="label"><%- item.name %>:</div>
+            <% if (!_(item.html).isEmpty()) { %>
+                <%= item.html %>
+            <% } else { %>
+                <%= item.text %>
+            <% } %>
+        </div>
+    <% }); %>
+<% } %>
+
+<% if (obj.days) { %>
+<hr class="separator">
+<div class="line">
+    <div class="label">График работы:</div>
+    <div class="schedule">
+        <div class="schedule__i">
+            <div class="schedule__wrap">
+                <div class="schedule__days">
+                    <%- days.working %>
+                </div>
+            </div>
+            <div class="schedule__wrap">
+                <div class="schedule__time">
+                <% if (_(hours.value).isArray() && !_(hours.value).isEmpty()) { %>
+                    <%- hours.value[0] %> - <%- hours.value[1] %>
+                <% } %>
+                </div>
+            </div>
+        </div>
+
+        <% if (!!lunch) { %>
+        <div class="schedule__i schedule__i-extra">
+            ПЕРЕРЫВ: <%- lunch.value[0] %> - <%- lunch.value[1] %>
+        </div>
+        <% } %>
+
+        <% if (!!days.weekend) { %>
+        <div class="schedule__i schedule__i_weekend">
+            <div class="schedule__wrap">
+                <div class="schedule__days">
+                    <%- days.weekend %>
+                </div>
+            </div>
+            <div class="schedule__wrap">
+                <div class="schedule__time">выходной</div>
+            </div>
+        </div>
+        <% } %>
+
+        <% if (!!days.extra) { %>
+        <div class="schedule__i schedule__i-extra">
+            <%= days.extra %>
+        </div>
+        <% } %>
+    </div>
+</div>
+<% } %>

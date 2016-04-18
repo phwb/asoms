@@ -1,0 +1,60 @@
+<div class="police-number">
+    <div class="police-number__title">
+        <span class="police-number__logo">
+            <img class="image" src="./img/police-logo-white.png">
+        </span>
+        <b>ПОЛИС</b> <br>обязательного медицинского <br>страхования
+    </div>
+    <div class="police__number"><%- enp %></div>
+</div>
+<div class="police-number police-detail">
+    <div class="police-detail__logo">
+        <img class="image" src="./img/police-logo-red.png" height="31">
+    </div>
+    <div class="police-detail-line">
+        <div class="police-detail__long">
+            <div class="police-detail__item">
+                <div class="police-detail__label">ФИО</div>
+                <% var f = fio.split(' ').join('<br>'); %>
+                <div class="police-detail__value"><%= f %></div>
+            </div>
+        </div>
+        <div class="police-detail__short">
+            <% if (date) { %>
+            <div class="police-detail__item">
+                <div class="police-detail__label">СРОК ДЕЙСТВИЯ</div>
+                <div class="police-detail__value"><%- _.template.formatDate(date) %></div>
+            </div>
+            <% } %>
+
+            <% if (sex) { %>
+            <div class="police-detail__item">
+                <div class="police-detail__label">ПОЛ</div>
+                <div class="police-detail__value"><%
+                    switch (sex) {
+                        case 'M': %>М<% break;
+                        case 'F': %>Ж<% break;
+                    }
+                %></div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <div class="police-detail-line police-detail-line_second">
+        <div class="police-detail__long">
+            <div class="police-detail__item">
+                <% if (!!blank && blank.length) { %>
+                    <div class="police-detail__value police-detail__value_num"><%- blank %></div>
+                <% } else { %>
+                    <div class="police-detail__value police-detail__value_num">00 00 000000</div>
+                <% } %>
+            </div>
+        </div>
+        <div class="police-detail__short">
+            <div class="police-detail__item">
+                <div class="police-detail__label">ДАТА РОЖДЕНИЯ</div>
+                <div class="police-detail__value"><%- _.template.formatDate(birthday) %></div>
+            </div>
+        </div>
+    </div>
+</div>

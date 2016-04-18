@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src
+                        'self'
+                        data:
+                        gap:
+                        http://alfastrahoms.ru
+                        https://*.yandex.ru
+                        http://*.yandex.ru
+                        https://*.yandex.net
+                        http://*.yandex.net;
+                   style-src
+                        'self'
+                        'unsafe-inline';
+                   script-src
+                        'self'
+                        https://*.yandex.ru http://*.yandex.ru 'unsafe-inline' 'unsafe-eval';
+                    ">
+
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/animations/move.css">
+    <link rel="stylesheet" href="./css/animations/fade.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/alfa.css">
+    <script src="./js/svg.js"></script>
+
+    <!--<link rel="stylesheet" href="./css/styles.min.css">
+    <script src="./js/svg.js"></script>-->
+</head>
+<body>
+<div id="svg-icons"></div>
+<div id="splash" class="loading">
+    <div class="splash__item splash__superman">
+        <div class="splash__logo">
+            <img src="./img/logo.svg" class="image">
+        </div>
+    </div>
+    <div class="splash__item splash__text">
+        <div id="animPolice" class="splash__anim-text splash__anim-text_police splash__anim_hidden">Наш полис</div>
+        <div id="animProtect" class="splash__anim-text splash__anim-text_you-safe splash__anim_hidden">на защите ваших прав</div>
+        <div id="splashLoader" class="splash-loader"></div>
+    </div>
+    <div id="animArc" class="splash__arc splash__anim_hidden"></div>
+</div>
+<div class="panel panel-left"></div>
+<div class="panel-overlay"></div>
+
+<div class="view">
+    <header class="header"></header>
+    <div class="pages header-through footer-through"></div>
+    <footer class="footer"></footer>
+</div>
+
+<script>
+(function () {
+    var ready = {
+        eventName: 'cordova' in window ? 'deviceready' : 'DOMContentLoaded',
+        state: false
+    };
+
+    document.getElementById('svg-icons').innerHTML = SVG_ICONS;
+    document.addEventListener(ready.eventName, function () {
+        ready.state = true;
+    });
+
+    window.ready = ready;
+} ());
+</script>
+<script data-main="./js/init" src="./js/libs/require/require.js"></script>
+<!--<script src="./cordova.js"></script>
+<script src="./js/build.min.js"></script>-->
+</body>
+</html>
