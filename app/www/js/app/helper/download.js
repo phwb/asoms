@@ -208,7 +208,7 @@ define([
                 return false;
             }
         }
-        el.fadeOut();
+        el.hide();
     }
 
     function animationStart() {
@@ -229,7 +229,7 @@ define([
             setTimeout(function () {
                 globalAnimation.animation = true;
                 hideSplash($splash);
-            }, 1000);
+            }, 3000);
         });
     }
 
@@ -243,7 +243,7 @@ define([
         immediate = immediate || false;
 
         if (immediate) {
-            splash.fadeIn();
+            splash.show();
             downloadResources(function () {
                 Backbone.Events.trigger('action:main');
             });
