@@ -60,7 +60,7 @@
         <icon width="60" height="60"   src="res/icon/ios/icon-60.png" />
         <icon width="120" height="120" src="res/icon/ios/icon-60@2x.png" />
         <!-- iPad -->
-        <icon width="76"  height="76"  src="res/icon/ios/icon-76.png.png" />
+        <icon width="76"  height="76"  src="res/icon/ios/icon-76.png" />
         <icon width="152" height="152" src="res/icon/ios/icon-76@2x.png" />
         <!-- iOS 6.1 -->
         <!-- Spotlight Icon -->

@@ -15,8 +15,8 @@
         <div class="police-detail__long">
             <div class="police-detail__item">
                 <div class="police-detail__label">ФИО</div>
-                <% var f = fio.split(' ').join('<br>'); %>
-                <div class="police-detail__value"><%- f %></div>
+                <% var f = fio.trim().split(' ').join('<br>'); %>
+                <div class="police-detail__value"><%= f %></div>
             </div>
         </div>
         <div class="police-detail__short">

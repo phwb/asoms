@@ -52,7 +52,24 @@ define([
             self.determineChange();
         }, 0);
     };
-    // console.log();
+    Form.validators.required = function(options) {
+        options = _.extend({
+            type: 'required',
+            message: this.errMessages.required
+        }, options);
+
+        return function required(value) {
+            value = value.trim();
+            options.value = value;
+
+            var err = {
+                type: options.type,
+                message: _.isFunction(options.message) ? options.message(options) : options.message
+            };
+
+            if (value === null || value === undefined || value === false || value === '') return err;
+        };
+    };
 
     Form.editors.Date.monthNames = 'Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь'.split(' ');
     Form.editors.Date.template = _.template('\

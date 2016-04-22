@@ -18,7 +18,10 @@ define([
             fio: {
                 type: 'Text',
                 title: 'ФИО',
-                validators: ['required'],
+                validators: ['required', {
+                    type: 'regexp',
+                    regexp: /^[а-яёА-ЯЁA-Za-z ,.'-]+$/i
+                }],
                 editorAttrs: {
                     placeholder: 'Указать'
                 }
