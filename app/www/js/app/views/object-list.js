@@ -63,7 +63,7 @@ define([
             this.$list = $('<ul class="teasers__lst" />');
             // кнопка для псевдопостранички
             this.$pager = $('<div class="button" />');
-            this.$pager.text('Загрузить еще').click(_.bind(this.addAll, this));
+            this.$pager.text('Загрузить еще');
             // вставляем список и кнопку в DOM
             this.$el.html(this.$list).append(this.$pager);
 
@@ -92,6 +92,10 @@ define([
             } else {
                 this.$pager.hide();
             }
+        },
+        render: function () {
+            this.$pager.click(_.bind(this.addAll, this));
+            return this;
         },
         resetIndex: function () {
             this.index = 0;
