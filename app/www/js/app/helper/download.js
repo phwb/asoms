@@ -196,10 +196,7 @@ define([
             });
     }
 
-    var globalAnimation = {
-        animation: false,
-        download: false
-    };
+    var globalAnimation;
 
     function hideSplash(el) {
         var key;
@@ -236,6 +233,11 @@ define([
     function checkResources(immediate) {
         var splash = $splash,
             needUpdate;
+
+        globalAnimation = {
+            animation: false,
+            download: false
+        };
 
         // старт анимации супермена
         animationStart();
