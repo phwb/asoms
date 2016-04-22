@@ -159,7 +159,7 @@ define([
             list({
                 uid: 'hospital',
                 collection: Hospitals,
-                title: 'Больницы',
+                title: 'Медицинские учреждения',
                 callback: function (err, view) {
                     if (err) {
                         notify.alert(err);
@@ -182,6 +182,7 @@ define([
             list({
                 uid: 'offices',
                 collection: Offices,
+                title: 'Пункты выдачи полисов',
                 callback: function (err, view) {
                     if (err) {
                         notify.alert(err);
