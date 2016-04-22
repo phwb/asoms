@@ -18,12 +18,12 @@ define([
             selected: false
         },
         {
-            name: 'Наши офисы',
+            name: 'Пункты выдачи полисов',
             action: 'offices',
             selected: false
         },
         {
-            name: 'Больницы',
+            name: 'Медицинские учреждения',
             action: 'hospital',
             selected: false
         },
