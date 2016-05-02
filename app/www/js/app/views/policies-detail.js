@@ -21,10 +21,10 @@ define([
         var date = new Date(stamp),
             fragments = [],
             d = date.getDate(),
-            m = date.getMonth(),
+            m = date.getMonth() + 1,
             y = date.getFullYear();
 
-        fragments.push(d);
+        fragments.push(d < 10 ? '0' + d : d);
         fragments.push(m < 10 ? '0' + m : m);
         fragments.push(y);
 

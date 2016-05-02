@@ -50,11 +50,13 @@
                 <% } %>
             </div>
         </div>
+        <% if (!!birthday) { %>
         <div class="police-detail__short">
             <div class="police-detail__item">
                 <div class="police-detail__label">ДАТА РОЖДЕНИЯ</div>
                 <div class="police-detail__value"><%- _.template.formatDate(birthday) %></div>
             </div>
         </div>
+        <% } %>
     </div>
 </div>

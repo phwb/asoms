@@ -90,7 +90,8 @@ gulp.task('static', function (cb) {
     gulp.src(['./css/fonts/*']).pipe(gulp.dest(dist.root + 'css/fonts'));
     gulp.src(['./js/svg.js']).pipe(gulp.dest(dist.root + 'js'));
     // копируем ресурсы
-    gulp.src(['../res/**/*']).pipe(gulp.dest('../../build/res'));
+    gulp.src(['../res/icon/**/*']).pipe(gulp.dest('../../build/res/icon'));
+    gulp.src(['../res/screen/**/*']).pipe(gulp.dest('../../build/res/screen'));
     gulp.src(['../config.xml']).pipe(gulp.dest('../../build'));
 
     cb();

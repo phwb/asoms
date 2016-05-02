@@ -7,7 +7,7 @@ define([
     return Backbone.Model.extend({
         defaults: {
             fio: '',
-            birthday: new Date(),
+            birthday: '',
             enp: '',
             sex: '',
             number: 0,
