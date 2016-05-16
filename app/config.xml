@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" id="ru.ugraweb.alfaoms" versionCode="000001" version="0.0.1">
-    <name>АС-ОМС</name>
+    <name>ОМС-АльфаСтрахование</name>
     <description>«АльфаСтрахование-ОМС» — одна из лидирующих страховых компаний на федеральном рынке обязательного медицинского страхования, более 20 лет она осуществляет организацию оказания доступной медицинской помощи населению, контролирует качество предоставленных услуг и обеспечивает защиту прав застрахованных.</description>
     <author email="ugraweb@gmail.com" href="http://ugraweb.ru">Ugraweb Team</author>
     <content src="index.html" />
