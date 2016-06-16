@@ -465,3 +465,12 @@
     left: 50%;
     top: 50%;
 }
+.main-nav__i_lk .main-nav__a {
+    padding: 9px 0 8px;
+}
+.main-nav__i_lk .main-nav__icon {
+    display: none;
+}
+.main-nav__i_lk {
+    width: 100%;
+}

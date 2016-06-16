@@ -57,7 +57,8 @@ gulp.task('rjs', function () {
             'views/object-detail': 'app/views/object-detail',
             'views/object-map': 'app/views/object-map',
             'views/about': 'app/views/about',
-            'views/sos': 'app/views/sos'
+            'views/sos': 'app/views/sos',
+            'views/lk': 'app/views/lk'
         },
         include: [
             'requireLib',
@@ -73,7 +74,8 @@ gulp.task('rjs', function () {
             'views/object-detail',
             'views/object-map',
             'views/about',
-            'views/sos'
+            'views/sos',
+            'views/lk'
         ],
         out: 'build.js'
     })

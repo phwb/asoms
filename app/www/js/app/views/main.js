@@ -15,6 +15,11 @@ define([
     /* --- Menu start --- */
     var arMenu = [
         {
+            "name": "Личный кабинет застрахованного",
+            "icon": "lk",
+            "action": "lk"
+        },
+        {
             "name": "Полисы",
             "icon": "policies",
             "action": "policies"
@@ -54,7 +59,10 @@ define([
             e.preventDefault();
         },
         render: function () {
-            this.$el.html( this.template( this.model.toJSON() ) );
+            var params = this.model.toJSON();
+            this.$el
+                .html( this.template( params ) )
+                .addClass('main-nav__i_' + params.icon);
             return this;
         }
     });

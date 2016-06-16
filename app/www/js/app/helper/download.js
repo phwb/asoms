@@ -7,7 +7,8 @@ define([
     'collections/cities',
     'collections/offices',
     'collections/hospitals',
-    'collections/infos'
+    'collections/infos',
+    'collections/links'
 ], function (
     Backbone,
     notify,
@@ -16,7 +17,8 @@ define([
     Cities,
     Offices,
     Hospitals,
-    Infos
+    Infos,
+    Links
 ) {
     'use strict';
 
@@ -178,6 +180,52 @@ define([
                 result.each(function (item) {
                     var params = _.extend({}, item);
                     Infos.create(params, {silent: true});
+                });
+            })
+            // ссылки
+            .then(function () {
+                var dfd = $.Deferred();
+                $.ajax({
+                    url: url + '/api/links/',
+                    dataType: 'json',
+                    method: 'get'
+                })
+                    .done(function (data) {
+                        dfd.resolve(data);
+                    })
+                    .fail(function () {
+                        dfd.resolve([
+                            {
+                                id: 1,
+                                name: 'Брянская область',
+                                link: 'https://napriem.info/Account/Login'
+                            },
+                            {
+                                id: 2,
+                                name: 'Кемеровская область',
+                                link: 'http://lk.kemoms.ru/login.aspx'
+                            },
+                            {
+                                id: 3,
+                                name: 'Мурманская область',
+                                link: 'http://price.omsmurm.ru/?menuItem=85'
+                            }
+                        ]);
+                    });
+                return dfd;
+            })
+            // парсинг ссылок
+            .then(function (data) {
+                var result = _(data);
+
+                if (result.isEmpty()) {
+                    return false;
+                }
+
+                Links.localStorage._clear();
+                result.each(function (item) {
+                    var params = _.extend({}, item);
+                    Links.create(params, {silent: true});
                 });
             })
             // все ОК, сохраняем в LS
