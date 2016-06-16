@@ -29,7 +29,8 @@ define([
             lunch: {
                 value: [],
                 text: ''
-            }
+            },
+            schedule: false
         }
     });
 });

@@ -474,3 +474,15 @@
 .main-nav__i_lk {
     width: 100%;
 }
+.icon__cup {
+    width: 11px;
+    height: 11px;
+    color: #a1a6a8;
+}
+.schedule__time-work {
+
+}
+.schedule__time-lunch {
+    color: #a1a6a8;
+    font-size: 1.4rem;
+}

@@ -35,6 +35,10 @@ define([
         </span>\
         ';
 
+    function trim(str) {
+        return (str || '').trim();
+    }
+
     var Item = Backbone.View.extend({
         tagName: 'li',
         className: 'teasers__i',
@@ -47,8 +51,21 @@ define([
         },
         template: _.template(itemTemplate),
         render: function () {
-            this.$el.html( this.template( this.model.toJSON() ) );
-            this.delegateEvents();
+            var params = this.model.toJSON();
+
+            if (params.schedule) {
+                params.schedule = params.schedule.map(function (item) {
+                    item._lunch = !!item.lunch
+                        ? item.lunch.split('-').map(trim).join(' - ')
+                        : false;
+                    item._work = !!item.work
+                        ? item.work.split('-').map(trim).join(' - ')
+                        : false;
+                    return item;
+                });
+            }
+
+            this.$el.html( this.template( params ) );
             return this;
         }
     });

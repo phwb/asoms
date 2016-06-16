@@ -9,25 +9,61 @@
 <% } %>
 
 <% if (_(props).isArray() && !_(props).isEmpty()) { %>
-    <%
-    _(props).each(function(item) {
-        var isEmptyValue = !!item.html || !!item.text;
-        if (!isEmptyValue) {
-            return this;
-        }
-        %>
-        <div class="line">
-            <div class="label"><%- item.name %>:</div>
-            <% if (!_(item.html).isEmpty()) { %>
-                <%= item.html %>
-            <% } else { %>
-                <%= item.text %>
-            <% } %>
-        </div>
-    <% }); %>
+<%
+_(props).each(function(item) {
+var isEmptyValue = !!item.html || !!item.text;
+if (!isEmptyValue) {
+return this;
+}
+%>
+<div class="line">
+    <div class="label"><%- item.name %>:</div>
+    <% if (!_(item.html).isEmpty()) { %>
+    <%= item.html %>
+    <% } else { %>
+    <%= item.text %>
+    <% } %>
+</div>
+<% }); %>
 <% } %>
 
-<% if (obj.days) { %>
+<% if (obj.schedule) { %>
+<hr class="separator">
+<div class="line">
+    <div class="label">График работы:</div>
+    <div class="schedule">
+        <% _(schedule).each(function (item) { %>
+        <% var weekend = !!item.weekend; %>
+        <div class="schedule__i <%= weekend ? 'schedule__i_weekend' : '' %>">
+            <div class="schedule__wrap">
+                <div class="schedule__days"><%- item.name %></div>
+            </div>
+            <div class="schedule__wrap">
+                <div class="schedule__time">
+                    <% if (weekend) { %>
+                    выходной
+                    <% } else { %>
+                    <div class="schedule__time-work"><%= item._work %></div>
+                    <% if (item._lunch) { %>
+                    <div class="schedule__time-lunch">
+                        <svg class="icon__cup"><use xlink:href="#icon_cup2"></use></svg>
+                        <%= item._lunch %>
+                    </div>
+                    <% } %>
+                    <% }  %>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+
+        <% if (obj.days && obj.days.extra) { %>
+        <div class="schedule__i schedule__i-extra">
+            <%= days.extra %>
+        </div>
+        <% } %>
+    </div>
+</div>
+<% } else if (obj.days) { %>
 <hr class="separator">
 <div class="line">
     <div class="label">График работы:</div>
@@ -40,9 +76,9 @@
             </div>
             <div class="schedule__wrap">
                 <div class="schedule__time">
-                <% if (_(hours.value).isArray() && !_(hours.value).isEmpty()) { %>
+                    <% if (_(hours.value).isArray() && !_(hours.value).isEmpty()) { %>
                     <%- hours.value[0] %> - <%- hours.value[1] %>
-                <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>

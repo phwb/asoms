@@ -302,8 +302,8 @@ define([
 
         needUpdate = (function () {
             var update = ls.getItem('update');
-            ls.setItem('update', 'N');
-            return !!(!update || update === 'Y');
+            ls.setItem('update', 'Y');
+            return !!(!update || update === 'N');
         } ());
 
         // читаем дату из хранилица

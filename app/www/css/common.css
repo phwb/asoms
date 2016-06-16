@@ -999,6 +999,7 @@ h4, .h4 { font-size: 1.4rem; }
     padding-right: 15px;
     font-weight: bold;
     position: relative;
+    text-transform: uppercase;
 }
 .schedule__days:after {
     content: '';
