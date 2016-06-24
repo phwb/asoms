@@ -6,6 +6,9 @@ define([
     'swipe',
     'app/helper/notify',
     'app/helper/download',
+    'app/helper/device',
+    // начальные настройки Backbone.Form
+    'app/helper/formInit',
     // главные вьюшки
     'views/menu',
     'views/main'
@@ -16,6 +19,9 @@ define([
     swipe,
     notify,
     checkResources,
+    device,
+    // начальные настройки Backbone.Form
+    formInit,
     // главные вьюшки
     menu,
     pageMain
@@ -23,6 +29,9 @@ define([
     'use strict';
 
     var $body = $('body');
+
+    // платформа на которое запущено приложение
+    $('html').addClass(device.os);
 
     // init FastClick
     FastClick.attach(document.body);
@@ -68,6 +77,29 @@ define([
         page.add(pageMain);
     });
 
+    Backbone.Events.on('action:ask', function () {
+        require(['views/ask'], function (pageForm) {
+            page.add(pageForm);
+            /*
+            пример события окончания анимации
+
+            роутер
+            page.add(pageForm, function () {
+                pageForm.page.trigger('pageAfterAnimation');
+            });
+
+            страница
+            ...
+            Page: {
+                init: function () {
+                    this.on('pageAfterAnimation', this.render);
+                }
+            }
+            ...
+            */
+        });
+    });
+
     Backbone.Events.on('action:lk', function () {
         require(['views/lk'], function (pageLk) {
             page.add(pageLk);
@@ -80,13 +112,11 @@ define([
         });
     });
 
-
     Backbone.Events.on('action:sos', function () {
         require(['views/sos'], function (pageSOS) {
             page.add(pageSOS);
         });
     });
-
 
     Backbone.Events.on('action:policies', function () {
         require(['views/policies'], function (pagePolicies) {

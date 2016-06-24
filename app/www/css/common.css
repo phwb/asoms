@@ -522,6 +522,7 @@ textarea.input {
     height: 100px;
     padding: 8px;
     vertical-align: top;
+    resize: vertical;
 }
 ::-webkit-input-placeholder {
     color: #000;

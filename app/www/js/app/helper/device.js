@@ -15,6 +15,7 @@ define([
         var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
         var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
 
+        device.os = 'windows';
         device.ios = device.android = device.iphone = device.ipad = device.androidChrome = false;
 
         // Android

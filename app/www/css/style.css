@@ -133,6 +133,11 @@
     color: #dc0227;
 }
 /* лоадер загрузки добавляется к .page-content */
+.button__inner:before,
+.button__inner:after {
+    display: none;
+}
+.button__inner:before,
 .page_loader:before {
     content: '';
     width: 32px;
@@ -152,6 +157,7 @@
     -webkit-animation: spinnerMove 1.1s infinite linear;
     animation: spinnerMove 1.1s infinite linear;
 }
+.button__inner:after,
 .page_loader:after {
     content: '';
     width: 30px;

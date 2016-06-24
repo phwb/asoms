@@ -29,7 +29,13 @@ define([
             cid: cid
         },
         Toolbar: {
-            show: false
+            events: {
+                'click .button_ask': 'showAskFrom'
+            },
+            showAskFrom: function (e) {
+                e.preventDefault();
+                Backbone.Events.trigger('action:ask');
+            }
         }
     });
 
