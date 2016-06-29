@@ -31,7 +31,7 @@ define([
 
                             if (!errors) {
                                 var params = {
-                                    url: 'http://alfastrahoms1.de02.agima.ru/api/addASKRequest/',
+                                    url: 'http://alfastrahoms.ru/api/addASKRequest/',
                                     data: this.model.toJSON(),
                                     method: 'post',
                                     dataType: 'json',

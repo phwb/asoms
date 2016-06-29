@@ -99,7 +99,7 @@ define([
                 e.preventDefault();
             },
             openAbout: function (e) {
-                Backbone.Events.trigger('action:about');
+                Backbone.Events.trigger('action:ask');
                 e.preventDefault();
             },
             init: function () {

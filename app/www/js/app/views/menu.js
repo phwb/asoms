@@ -33,6 +33,11 @@ define([
             selected: false
         },
         {
+            name: 'Наши сайты',
+            action: 'about',
+            selected: false
+        },
+        {
             name: 'Обновить',
             action: 'refresh',
             selected: false
