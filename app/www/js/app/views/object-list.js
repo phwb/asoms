@@ -78,6 +78,16 @@ define([
             this.limit = params.index || 10;
 
             this.$list = $('<ul class="teasers__lst" />');
+            this.$empty = this.$el
+                .parent()
+                .find('.emptyOffices');
+            if (this.$empty.length > 0) {
+                var message = params.uid === 'offices'
+                    ? 'В данном населенном пункте нет <br>ни одного пункта выдачи полисов.'
+                    : 'В данном населенном пункте нет <br>ни одного медицинского учреждения.';
+                this.$empty.find('.emptyOfficesText').html(message);
+            }
+
             // кнопка для псевдопостранички
             this.$pager = $('<div class="button" />');
             this.$pager.text('Загрузить еще');
@@ -106,7 +116,9 @@ define([
 
                 _(sliced).each(this.addItem, this);
                 this.index += this.limit;
+                this.$empty.hide();
             } else {
+                this.$empty.show();
                 this.$pager.hide();
             }
         },
@@ -143,13 +155,13 @@ define([
         addAll: function () {
             var offices = this.collection.where({city: this.city});
 
-            if (offices.length > 0) {
-                ymaps.ready(function () {
-                    var geoObjects = [],
-                        clusterer = new ymaps.Clusterer({
-                            preset: 'islands#redClusterIcons'
-                        });
+            ymaps.ready(function () {
+                var geoObjects = [],
+                    clusterer = new ymaps.Clusterer({
+                        preset: 'islands#redClusterIcons'
+                    });
 
+                if (offices.length > 0) {
                     _(offices).each(function (item) {
                         var coords = item.get('coords'),
                             placemark;
@@ -171,9 +183,20 @@ define([
 
                     this.map.geoObjects.removeAll();
                     this.map.geoObjects.add(clusterer);
-                    // this.map.setBounds(clusterer.getBounds());
-                }.bind(this));
-            }
+                    this.map.setBounds(clusterer.getBounds());
+                    if (this.map.getZoom() >= 18) {
+                        this.map.setZoom(18);
+                    }
+                } else {
+                    this.map.geoObjects.removeAll();
+                    this.map.setBounds([
+                        [43.16957922365199, 77.25124884347768],
+                        [76.03359767552693, 119.9660925934777]
+                    ]);
+                    this.map.setZoom(4);
+                    window.map = this.map;
+                }
+            }.bind(this));
         },
         addItem: function (item) {
             var coords = item.get('coords'),
@@ -190,11 +213,12 @@ define([
             }
         },
         setCenter: function (map, city) {
+            /*console.log(map);
             if (!map) {
                 return this;
-            }
+            }*/
             ymaps.ready(function () {
-                this.map.setCenter(map.coords.value, map.zoom);
+                // this.map.setCenter(map.coords.value, map.zoom);
 
                 this.city = city;
                 this.addAll();
@@ -305,7 +329,7 @@ define([
                         this.$name = this.$('.region-name');
                         this.$list = this.$('.list');
                         this.$map = this.$('.map');
-                        this.$tabs = this.$('.tabs__lst');
+                        // this.$tabs = this.$('.tabs__lst');
 
                         this.$name.text('Выберите регион');
                         // скрываем не нужные контролы
@@ -372,7 +396,7 @@ define([
 
                         // прячем или показываем кнопки выбора вида: список/карта
                         // если у города нет координат центра карты
-                        this.$tabs[ !city.get('map') ? 'hide' : 'show' ]();
+                        // this.$tabs[ !city.get('map') ? 'hide' : 'show' ]();
 
                         // если карта проинициализирована, то установим новый центр карты
                         if (map) {
@@ -381,15 +405,18 @@ define([
 
                         if (!list[id]) {
                             list[id] = new List({
+                                el: this.$list,
                                 collection: collection,
-                                city: id
+                                city: id,
+                                uid: uid
                             });
                         } else {
                             list[id].resetIndex();
                         }
 
                         collection.fetch({reset: true});
-                        this.$list.html( list[id].render().el );
+                        list[id].render();
+                        // this.$list.html( .el );
                     },
                     selectRegion: function (e) {
                         Backbone.Events.trigger('region:select');
