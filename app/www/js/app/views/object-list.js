@@ -288,7 +288,7 @@ define([
                             action = $button.data('action');
 
                         e.preventDefault();
-                        if ( $button.hasClass('tabs__i_active') ) {
+                        if ($button.hasClass('tabs__i_active') ) {
                             return this;
                         }
 
