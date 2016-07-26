@@ -11,7 +11,8 @@ define([
             id: 0,
             name: 'Ханты-Мансийск',
             selected: false,
-            region: 0
+            region: 0,
+            sort: 500
         }
     });
 });

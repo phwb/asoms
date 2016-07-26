@@ -15,6 +15,9 @@ define([
     var Cities = Backbone.Collection.extend({
         model: City,
         localStorage: new Store('cities'),
+        comparator: function (model) {
+            return model.get('sort');
+        },
         getSelected: function () {
             return this.find({selected: true});
         },

@@ -81,6 +81,7 @@ define([
             this.$empty = this.$el
                 .parent()
                 .find('.emptyOffices');
+
             if (this.$empty.length > 0) {
                 var message = params.uid === 'offices'
                     ? 'В данном населенном пункте нет <br>ни одного пункта выдачи полисов.'
@@ -91,10 +92,12 @@ define([
             // кнопка для псевдопостранички
             this.$pager = $('<div class="button" />');
             this.$pager.text('Загрузить еще');
+
             // вставляем список и кнопку в DOM
             this.$el.html(this.$list).append(this.$pager);
 
             this.listenTo(this.collection, 'reset', this.addAll);
+            this.collection.fetch({reset: true});
         },
         addItem: function (item) {
             var office = new Item({model: item});
@@ -102,6 +105,9 @@ define([
         },
         addAll: function () {
             var offices = this.collection.where({city: this.city});
+
+            this.$list = this.$('.teasers__lst');
+            this.$pager.click(_.bind(this.addAll, this));
 
             if (offices.length > 0) {
                 var nextIndex = this.index + this.limit,
@@ -120,10 +126,10 @@ define([
             } else {
                 this.$empty.show();
                 this.$pager.hide();
+                this.$list.empty();
             }
         },
         render: function () {
-            this.$pager.click(_.bind(this.addAll, this));
             return this;
         },
         resetIndex: function () {
@@ -413,10 +419,8 @@ define([
                         } else {
                             list[id].resetIndex();
                         }
-
-                        collection.fetch({reset: true});
-                        list[id].render();
-                        // this.$list.html( .el );
+                        // list[id].render();
+                        // this.$list.html( list[id].el );
                     },
                     selectRegion: function (e) {
                         Backbone.Events.trigger('region:select');

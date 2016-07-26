@@ -75,13 +75,19 @@ define([
                      * @property {Number} city.ID
                      * @property {String} city.NAME
                      * @property {String} city.MAP
+                     * @property {String} city.SORT
                      */
                     cities.each(function (city) {
+                        var sort = 500;
+                        if (city.SORT) {
+                            sort = +city.SORT || sort;
+                        }
                         Cities.create({
                             id: city.ID,
                             name: city.NAME,
                             region: item.ID,
-                            map: city.MAP || false
+                            map: city.MAP || false,
+                            sort: sort
                         }, {silent: true});
                     });
                 });

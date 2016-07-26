@@ -38,8 +38,8 @@
     background: rgba(220, 2, 39, .15);
 }
 
-.cbutton--effect-jagoda:before,
-.cbutton--effect-jagoda:after {
+.ios .cbutton--effect-jagoda:before, .windows .cbutton--effect-jagoda:before,
+.ios .cbutton--effect-jagoda:after, .windows .cbutton--effect-jagoda:after {
     -webkit-animation-name: anim-effect-jagoda-2;
     animation-name: anim-effect-jagoda-2;
 
@@ -127,7 +127,8 @@
     background: rgba(255, 255, 255, .3);
     box-shadow: 0 0 10px 0 rgba(225, 225, 225, .3) inset;
 }
-.sos-phone__link_animated .circle_1 {
+.ios .sos-phone__link_animated .circle_1,
+.windows .sos-phone__link_animated .circle_1 {
     -webkit-animation: anim-effect-circle-1 infinite 2s forwards;
     animation: anim-effect-circle-1 infinite 2s forwards;
 }
@@ -138,7 +139,8 @@
     background: rgba(255, 255, 255, .2);
     box-shadow: 0 0 10px 0 rgba(225, 225, 225, .2) inset;
 }
-.sos-phone__link_animated .circle_2 {
+.ios .sos-phone__link_animated .circle_2,
+.windows .sos-phone__link_animated .circle_2 {
     -webkit-animation: anim-effect-circle-1 infinite 2s forwards;
     animation: anim-effect-circle-1 infinite 2s forwards;
 
@@ -152,7 +154,8 @@
     background: rgba(255, 255, 255, .15);
     box-shadow: 0 0 10px 0 rgba(225, 225, 225, .05) inset;
 }
-.sos-phone__link_animated .circle_3 {
+.ios .sos-phone__link_animated .circle_3,
+.windows .sos-phone__link_animated .circle_3 {
     -webkit-animation: anim-effect-circle-1 infinite 2s forwards;
     animation: anim-effect-circle-1 infinite 2s forwards;
 
