@@ -118,6 +118,9 @@ a, .u {
     background: url("../img/superman-min.png") no-repeat 50% 100%;
     background-size: cover;
 }
+.splash__superman_tetka {
+    background-image: url("../img/tetka-v2-min.png");
+}
 .splash__text {
     height: 25%;
     position: relative;
@@ -296,7 +299,7 @@ a, .u {
     width: 100%;
     background: #dc0227;
     border-top: 1px solid #aa142b;
-    -webkit-tap-highlight-color: rgba(170, 20, 43, 1);
+    /*-webkit-tap-highlight-color: rgba(170, 20, 43, 1);*/
 }
 .main-nav__i:first-child {
     border-top: 0 none;
@@ -471,7 +474,7 @@ a, .u {
 /* back-button */
 .back-button {
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(170, 20, 43, 1);
+    /*-webkit-tap-highlight-color: rgba(170, 20, 43, 1);*/
 }
 .back-button_color_light .back-button__icon {
     color: #fff;

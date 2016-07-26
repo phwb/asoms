@@ -259,7 +259,7 @@ define([
                 return false;
             }
         }
-        el.hide();
+        el.removeClass('loading').hide();
     }
 
     function animationStart() {
@@ -299,7 +299,7 @@ define([
         immediate = immediate || false;
 
         if (immediate) {
-            splash.show();
+            splash.addClass('loading').show();
             downloadResources(function () {
                 Backbone.Events.trigger('action:main');
             });

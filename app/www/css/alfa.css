@@ -12,8 +12,8 @@
     line-height: 80px;
 }
 /* ------------------ Jagoda (start) ------------------ */
-.cbutton--effect-jagoda:after,
-.cbutton--effect-jagoda:before {
+.ios .cbutton--effect-jagoda:after, .windows .cbutton--effect-jagoda:after,
+.ios .cbutton--effect-jagoda:before, .windows .cbutton--effect-jagoda:before {
     content: '';
     position: absolute;
     top: 50%;
@@ -23,14 +23,16 @@
     pointer-events: none;
     /*box-shadow: 0 0 0 1px rgba(220, 2, 39, 0.5);*/
 }
-.cbutton--effect-jagoda:before {
+.ios .cbutton--effect-jagoda:before,
+.windows .cbutton--effect-jagoda:before {
     width: 90px;
     height: 90px;
     margin-left: -45px;
     margin-top: -45px;
     background: rgba(220, 2, 39, .3);
 }
-.cbutton--effect-jagoda:after {
+.ios .cbutton--effect-jagoda:after,
+.windows .cbutton--effect-jagoda:after {
     width: 100px;
     height: 100px;
     margin-left: -50px;
@@ -54,6 +56,18 @@
 
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+}
+
+.android .button__sos:before {
+    content: '';
+    width: 96px;
+    height: 96px;
+    background: url("../img/sos-v2.gif") no-repeat;
+    margin: -48px 0 0 -48px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
 }
 
 /*.cbutton--effect-jagoda:after {
@@ -127,35 +141,40 @@
     background: rgba(255, 255, 255, .3);
     box-shadow: 0 0 10px 0 rgba(225, 225, 225, .3) inset;
 }
-.ios .sos-phone__link_animated .circle_1,
-.windows .sos-phone__link_animated .circle_1 {
+.ios .circle_1, .windows .circle_1 {
     -webkit-animation: anim-effect-circle-1 infinite 2s forwards;
     animation: anim-effect-circle-1 infinite 2s forwards;
 }
-.circle_2 {
+.android .circle_1 {
+    width: 180px;
+    height: 180px;
+    margin: -90px 0 0 -90px;
+    background: url("../img/phone-sos-v2.gif") no-repeat;
+    z-index: 5;
+}
+.ios .circle_2, .windows .circle_2 {
     width: 160px;
     height: 160px;
     margin: -80px 0 0 -80px;
     background: rgba(255, 255, 255, .2);
     box-shadow: 0 0 10px 0 rgba(225, 225, 225, .2) inset;
 }
-.ios .sos-phone__link_animated .circle_2,
-.windows .sos-phone__link_animated .circle_2 {
+.ios .circle_2, .windows .circle_2 {
     -webkit-animation: anim-effect-circle-1 infinite 2s forwards;
     animation: anim-effect-circle-1 infinite 2s forwards;
 
     -webkit-animation-delay: .2s;
     animation-delay: .2s;
 }
-.circle_3 {
+.ios .circle_3, .windows .circle_3 {
     width: 190px;
     height: 190px;
     margin: -95px 0 0 -95px;
     background: rgba(255, 255, 255, .15);
     box-shadow: 0 0 10px 0 rgba(225, 225, 225, .05) inset;
 }
-.ios .sos-phone__link_animated .circle_3,
-.windows .sos-phone__link_animated .circle_3 {
+.ios .circle_3,
+.windows .circle_3 {
     -webkit-animation: anim-effect-circle-1 infinite 2s forwards;
     animation: anim-effect-circle-1 infinite 2s forwards;
 

@@ -1,25 +1,25 @@
 /* global define, require */
 define([
+    'app/helper/device',
     'fastclick',
     'backbone',
     'page',
     'swipe',
     'app/helper/notify',
     'app/helper/download',
-    'app/helper/device',
     // начальные настройки Backbone.Form
     'app/helper/formInit',
     // главные вьюшки
     'views/menu',
     'views/main'
 ], function (
+    device,
     FastClick,
     Backbone,
     page,
     swipe,
     notify,
     checkResources,
-    device,
     // начальные настройки Backbone.Form
     formInit,
     // главные вьюшки
