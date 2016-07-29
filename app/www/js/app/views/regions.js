@@ -107,14 +107,14 @@ define([
 
             this.model.set('selected', true);
         },
-        template: _.template('\
-        <span class="items-list__a">\
-            <%- name %>\
-            <svg class="items-list__icon">\
-                <use xlink:href="#icon_check"></use>\
-            </svg>\
-        </span>\
-        '),
+        template: _.template(
+            '<span class="items-list__a">' +
+                '<%- name %>' +
+                '<svg class="items-list__icon">' +
+                    '<use xlink:href="#icon_check"></use>' +
+                '</svg>' +
+            '</span>'
+        ),
         render: function () {
             this.$el.html( this.template( this.model.toJSON() ) );
             if (this.model.get('selected')) {
@@ -137,15 +137,31 @@ define([
             this.$list.append( item.render().el );
         },
         addAll: function () {
-            // ищес выбранный регион
+            // ищем выбранный регион
             var region = Regions.find('selected', true);
             if (region === undefined) {
                 return this;
             }
+
+            this.$list.empty();
+
+            var hideCities = region.get('hideCities');
+            if (hideCities) {
+                var empty =
+                    '<li class="items-list__i">' +
+                        '<div class="police-empty__txt">' +
+                            '<img src="img/doc.svg">' +
+                            '<b>Уважаемые пользователи!</b> <br>Информируем Вас о том, <br>что деятельность филиала <br>' +
+                            'по выдаче полисов обязательного медицинского страхования <br>планируется с 01.01.2017' +
+                        '</div>' +
+                    '</li>';
+                this.$list.html(empty);
+                return this;
+            }
+
             // выбираем список городов для выбранного региона
             var list = this.collection.where({region: region.get('id')});
             if (list.length > 0) {
-                this.$list.empty();
                 _(list).each(this.addCity, this);
             }
         },
@@ -192,14 +208,14 @@ define([
             this.$other.slideToggle(300);
             return this;
         },
-        selectedTemplate: _.template('\
-        <div class="sub-header__h">\
-            <%- name %>\
-            <svg class="sub-header__select-icon">\
-                <use xlink:href="#icon_down-arrow"></use>\
-            </svg>\
-        </div>\
-        '),
+        selectedTemplate: _.template(
+            '<div class="sub-header__h">' +
+                '<%- name %>' +
+                '<svg class="sub-header__select-icon">' +
+                    '<use xlink:href="#icon_down-arrow"></use>' +
+                '</svg>' +
+            '</div>'
+        ),
         initialize: function () {
             this.$selected = $('<div class="sub-header sub-header_select" />');
             this.$other = $('<ul class="more-items__lst" style="display: none;" />');

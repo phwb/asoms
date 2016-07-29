@@ -12,7 +12,7 @@ define([
             name: 'Ханты-Мансийск',
             selected: false,
             region: 0,
-            sort: 500
+            sort: 100
         }
     });
 });

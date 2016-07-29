@@ -10,7 +10,8 @@ define([
         defaults: {
             id: 0,
             name: 'Югория-мед',
-            selected: false
+            selected: false,
+            hideCities: false
         }
     });
 });

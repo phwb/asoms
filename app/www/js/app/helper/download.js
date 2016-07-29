@@ -57,6 +57,7 @@ define([
                  * @property {Number} item.ID
                  * @property {String} item.NAME
                  * @property {Array} item.CITIES
+                 * @property {String} item.HIDE_APP
                  */
                 regions.each(function (item) {
                     var cities = _(item.CITIES);
@@ -64,9 +65,14 @@ define([
                         return this;
                     }
 
+                    var hide = Regions.model.prototype.defaults.hideCities;
+                    if (item.HIDE_APP) {
+                        hide = item.HIDE_APP === 'Y';
+                    }
                     Regions.create({
                         id: item.ID,
-                        name: item.NAME
+                        name: item.NAME,
+                        hideCities: hide
                     }, {silent: true});
 
                     /**
@@ -78,7 +84,7 @@ define([
                      * @property {String} city.SORT
                      */
                     cities.each(function (city) {
-                        var sort = 500;
+                        var sort = Cities.model.prototype.defaults.sort;
                         if (city.SORT) {
                             sort = +city.SORT || sort;
                         }

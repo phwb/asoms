@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="ru.ugraweb.alfaoms" versionCode="000005" version="0.0.5">
+<widget xmlns="http://www.w3.org/ns/widgets" id="ru.ugraweb.alfaoms" versionCode="000007" version="0.0.7">
     <name>ОМС-АльфаСтрахование</name>
     <description>
         Приложение компании «АльфаСтрахование-ОМС» позволит вам:
@@ -85,11 +85,11 @@
         <icon width="50" height="50"   src="res/icon/ios/icon-50.png" />
         <icon width="100" height="100" src="res/icon/ios/icon-50@2x.png" />
 
-        <splash src="res/screen/ios/Default~iphone.png"             width="320" height="480"/>
-        <splash src="res/screen/ios/Default@2x~iphone.png"          width="640" height="960"/>
-        <splash src="res/screen/ios/Default-Portrait~ipad.png"      width="768" height="1024"/>
-        <splash src="res/screen/ios/Default-Portrait@2x~ipad.png"   width="1536" height="2048"/>
-        <splash src="res/screen/ios/Default-568h@2x~iphone.png"     width="640" height="1136"/>
+        <splash src="res/screen/ios/Default-iphone.png"             width="320" height="480"/>
+        <splash src="res/screen/ios/Default@2x-iphone.png"          width="640" height="960"/>
+        <splash src="res/screen/ios/Default-Portrait-ipad.png"      width="768" height="1024"/>
+        <splash src="res/screen/ios/Default-Portrait@2x-ipad.png"   width="1536" height="2048"/>
+        <splash src="res/screen/ios/Default-568h@2x-iphone.png"     width="640" height="1136"/>
         <splash src="res/screen/ios/Default-667h.png"               width="750" height="1334"/>
         <splash src="res/screen/ios/Default-736h.png"               width="1242" height="2208"/>
     </platform>
