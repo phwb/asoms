@@ -40,6 +40,7 @@ define([
             var pageView = new PageView({
                 html: template,
                 Page: {
+                    cid: 'policies-check',
                     events: {
                         'click .button': 'back'
                     },

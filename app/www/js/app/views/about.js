@@ -11,6 +11,9 @@ define([
 
     var pageView = new PageView({
         html: template,
+        Page: {
+            cid: 'about'
+        },
         Toolbar: {
             show: false
         }

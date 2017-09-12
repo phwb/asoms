@@ -58,6 +58,7 @@ define([
             title: 'Информация'
         },
         Page: {
+            cid: 'info',
             init: function () {
                 this.$list = this.$('.items-list');
 

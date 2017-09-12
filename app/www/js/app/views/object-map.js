@@ -65,6 +65,7 @@ define([
                     title: model.get('name')
                 },
                 Page: {
+                    cid: 'object-map/' + id,
                     init: function () {
                         this.$map = this.$('.map');
                         this.on('render:map', this.checkMap);

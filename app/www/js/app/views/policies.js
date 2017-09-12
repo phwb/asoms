@@ -40,6 +40,7 @@ define([
     var pageView = new PageView({
         html: listPage,
         Page: {
+            cid: 'policies',
             init: function () {
                 this.$list = this.$('#policiesList');
                 this.$empty = this.$('#emptyPolicy');

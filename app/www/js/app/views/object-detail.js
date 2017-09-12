@@ -45,6 +45,7 @@ define([
                     title: model.get('name')
                 },
                 Page: {
+                    cid: 'object-detail/' + model.id,
                     init: function () {
                         this.$content = this.$('.page-content');
                     },

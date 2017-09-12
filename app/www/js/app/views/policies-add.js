@@ -52,6 +52,7 @@ define([
             var pageView = new PageView({
                 html: addPage,
                 Page: {
+                    cid: 'policies-add',
                     render: function () {
                         this.$('#addForm').html( form.render().el );
                         return this;

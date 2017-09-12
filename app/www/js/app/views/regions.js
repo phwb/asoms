@@ -274,6 +274,7 @@ define([
             title: 'Изменить регион'
         },
         Page: {
+            cid: 'regions',
             init: function () {
                 var regions = new RegionList({
                     collection: Regions,

@@ -47,6 +47,7 @@ define([
             title: 'Личный кабинет'
         },
         Page: {
+            cid: 'lk',
             init: function () {
                 var infoView = new InfoList({
                     collection: links

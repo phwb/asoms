@@ -54,6 +54,7 @@ define([
                     title: info.get('name')
                 },
                 Page: {
+                    cid: 'info-detail/' + id,
                     init: function () {
                         this.$page = this.$('.page-content');
                     },

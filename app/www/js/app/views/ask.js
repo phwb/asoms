@@ -22,6 +22,7 @@ define([
     var pageView = new PageView({
         html: template,
         Page: {
+            cid: 'ask',
             render: function () {
                 form = new Form({
                     model: ask,

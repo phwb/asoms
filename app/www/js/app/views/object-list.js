@@ -279,6 +279,7 @@ define([
                     title: params.title || 'Наши офисы'
                 },
                 Page: {
+                    cid: 'object-list/' + uid,
                     events: {
                         'click .region': 'selectRegion',
                         'click .tabs__i': 'toggleView'

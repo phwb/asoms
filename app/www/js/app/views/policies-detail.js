@@ -67,6 +67,7 @@ define([
                         'click .control-button_edit': 'edit',
                         'click .control-button_delete': 'remove'
                     }*/
+                    cid: 'policies-detail',
                     init: function () {
                         this.$item = this.$('.detail');
                     },
