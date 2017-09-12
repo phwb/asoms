@@ -31,7 +31,7 @@ define([
 
     function downloadResources(cb) {
         var splash = $splash;
-        var url = 'http://alfastrahoms.ru';
+        var url = 'https://alfastrahoms.ru';
 
         cb = cb || function () {};
 

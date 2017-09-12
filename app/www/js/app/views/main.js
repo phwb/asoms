@@ -103,7 +103,7 @@ define([
                 e.preventDefault();
             },
             init: function () {
-                var $sos = this.$el.find('#mainSOS');
+                var $sos = this.$el.find('.button__sos');
 
                 // событие анимации кнопкт SOS
                 Backbone.Events.on('page:beforeAdd', function (pageId) {
