@@ -52,7 +52,7 @@ define([
                 this.$el.html(navbar.html()).addClass(extraClass);
 
                 if (!!self.Navbar.title) {
-                    this.$('.header__h').text(self.Navbar.title);
+                    this.$('.header__h').html(self.Navbar.title);
                 }
             }
         }, this.Navbar));
