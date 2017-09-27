@@ -19,6 +19,7 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^1.1.1" />
     <plugin name="cordova-plugin-statusbar" spec="https://github.com/apache/cordova-plugin-statusbar" source="git" />
     <plugin name="cordova-plugin-whitelist" spec="^1.2.0" />
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
 
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />              <!-- all: possible values handset, tablet, or universal -->

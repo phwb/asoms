@@ -58,17 +58,35 @@ define([
         }
     });
 
-    // page - вставляет в DOM страницы и анимирует их
-    page.add(pageMain, function () {
-        // после рендера главной страницы проверяем актуальность данных
-        // и обновляем при необходимости
-        checkResources();
+    document.addEventListener('deviceready', function () {
+        if ('ga' in window) {
+            ga.startTrackerWithId('UA-106162454-1', 10, function () {
+                Backbone.Events.on('page:beforeAdd', function (pageId) {
+                    ga.trackView(pageId);
+                })
+
+                // клик по кнопке "вызов оператора"
+                $(document).on('click', '#sosPhone', function (e) {
+                    e.preventDefault();
+
+                    ga.trackEvent('Call', 'HotLine');
+                    location.href = this.getAttribute('href');
+                });
+            });
+        }
     });
 
     document.addEventListener('backbutton', function (e) {
         page.back();
         e.preventDefault();
     }, false);
+
+    // page - вставляет в DOM страницы и анимирует их
+    page.add(pageMain, function () {
+        // после рендера главной страницы проверяем актуальность данных
+        // и обновляем при необходимости
+        checkResources();
+    });
 
     // роутером выступает собыитя бекбона
     // для навигации лучше бы использоваль бекбоновский router,
