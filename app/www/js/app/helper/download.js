@@ -1,6 +1,7 @@
 /* global define, $, _, window */
 define([
     'backbone',
+    'underscore',
     'app/helper/notify',
     // коллекции
     'collections/regions',
@@ -11,6 +12,7 @@ define([
     'collections/links'
 ], function (
     Backbone,
+    _,
     notify,
     // коллекции
     Regions,
@@ -258,17 +260,23 @@ define([
 
     var globalAnimation;
 
-    function hideSplash(el) {
+    function hideSplash(el, callback) {
         var key;
+
+        if (typeof callback !== 'function') {
+            callback = $.noop
+        }
+
         for (key in globalAnimation) {
             if (globalAnimation.hasOwnProperty(key) && globalAnimation[key] === false) {
                 return false;
             }
         }
         el.removeClass('loading').hide();
+        callback()
     }
 
-    function animationStart() {
+    function animationStart(callback) {
         var dfd1 = $.Deferred();
         var dfd2 = $.Deferred();
 
@@ -285,12 +293,12 @@ define([
         $.when(dfd1, dfd2).then(function () {
             setTimeout(function () {
                 globalAnimation.animation = true;
-                hideSplash($splash);
+                hideSplash($splash, callback);
             }, 3000);
         });
     }
 
-    function checkResources(immediate) {
+    function checkResources(immediate, callback) {
         var splash = $splash,
             needUpdate;
 
@@ -300,7 +308,7 @@ define([
         };
 
         // старт анимации супермена
-        animationStart();
+        animationStart(callback);
         // флаг обновления данных
         immediate = immediate || false;
 
@@ -315,7 +323,7 @@ define([
         needUpdate = (function () {
             var update = ls.getItem('update');
             ls.setItem('update', 'Y');
-            return !!(!update || update === 'N');
+            return !update || update === 'N';
         } ());
 
         // читаем дату из хранилица
@@ -328,7 +336,8 @@ define([
 
         if (!expireDate) {
             // если ее нет, то сразу грузим ресурсы
-            downloadResources();
+            downloadResources(callback);
+
             return true;
         } else if (now > expireDate) {
             notify.confirm({
@@ -336,18 +345,22 @@ define([
                 buttons: ['Отмена', 'Обновить'],
                 callback: function (index) {
                     if (index > 1 || index === true) {
-                        downloadResources();
+                        downloadResources(callback);
+
                         return true;
                     }
                     globalAnimation.download = true;
                     hideSplash(splash);
+
                     return false;
                 }
             });
+
             return true;
         }
         globalAnimation.download = true;
-        hideSplash(splash);
+        hideSplash(splash, callback);
+
         return false;
     }
 
