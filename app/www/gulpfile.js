@@ -37,6 +37,7 @@ gulp.task('rjs', function () {
             backboneForm: 'libs/backbone.form/backbone-forms',
             text: 'libs/require/text',
             swipe: 'libs/touchSwipe/jquery.touchSwipe',
+            barrating: 'libs/jquery.barrating/jquery.barrating',
             ymaps: 'empty:',
             // мои библиотеки
             page: 'libs/pages/page',
@@ -108,7 +109,8 @@ gulp.task('css', function () {
         './css/animations/fade.css',
         './css/common.css',
         './css/style.css',
-        './css/alfa.css'
+        './css/alfa.css',
+        './js/libs/jquery.barrating/css-stars.css'
     ];
     return gulp.src(paths)
         .pipe(minifyCSS())

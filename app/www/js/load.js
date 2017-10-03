@@ -11,7 +11,10 @@ define([
     'app/helper/formInit',
     // главные вьюшки
     'views/menu',
-    'views/main'
+    'views/main',
+    'app/helper/modal/index',
+    // то что не уходит в параметры
+    'barrating'
 ], function (
     device,
     FastClick,
@@ -24,10 +27,12 @@ define([
     formInit,
     // главные вьюшки
     menu,
-    pageMain
+    pageMain,
+    modal
 ) {
     'use strict';
 
+    var $ = Backbone.$
     var $body = $('body');
 
     // платформа на которое запущено приложение
@@ -62,7 +67,7 @@ define([
     page.add(pageMain, function () {
         // после рендера главной страницы проверяем актуальность данных
         // и обновляем при необходимости
-        checkResources();
+        checkResources(false, modal.init);
     });
 
     document.addEventListener('backbutton', function (e) {
@@ -270,6 +275,12 @@ define([
 
     Backbone.Events.on('action:refresh', function () {
         checkResources(true);
+    });
+
+    Backbone.Events.on('action:review', function (ratingValue) {
+        require(['views/review'], function (review) {
+            page.add(review(ratingValue));
+        })
     });
 
     return true;

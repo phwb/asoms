@@ -1,28 +1,30 @@
 @font-face {
   font-family: 'KievitPro';
-  src: url('fonts/subset-KievitPro-Regular.eot');
-  src: url('fonts/subset-KievitPro-Regular.eot?#iefix') format('embedded-opentype'), url('fonts/subset-KievitPro-Regular.woff') format('woff'), url('fonts/subset-KievitPro-Regular.ttf') format('truetype');
+  src: url('fonts/subset-KievitPro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'KievitPro';
-  src: url('fonts/subset-KievitPro-Bold.eot');
-  src: url('fonts/subset-KievitPro-Bold.eot?#iefix') format('embedded-opentype'), url('fonts/subset-KievitPro-Bold.woff') format('woff'), url('fonts/subset-KievitPro-Bold.ttf') format('truetype');
+  src: url('fonts/subset-KievitPro-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'KievitPro';
-  src: url('fonts/subset-KievitPro-Italic.eot');
-  src: url('fonts/subset-KievitPro-Italic.eot?#iefix') format('embedded-opentype'), url('fonts/subset-KievitPro-Italic.woff') format('woff'), url('fonts/subset-KievitPro-Italic.ttf') format('truetype');
+  src: url('fonts/subset-KievitPro-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: 'KievitPro-BoldItalic';
-  src: url('fonts/subset-KievitPro-BoldItalic.eot');
-  src: url('fonts/subset-KievitPro-BoldItalic.eot?#iefix') format('embedded-opentype'), url('fonts/subset-KievitPro-BoldItalic.woff') format('woff'), url('fonts/subset-KievitPro-BoldItalic.ttf') format('truetype');
+  src: url('fonts/subset-KievitPro-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
+}
+@font-face {
+    font-family: 'fontello';
+    src: url('fonts/fontello.woff2?62342386') format('woff2'), url('fonts/fontello.woff?62342386') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }

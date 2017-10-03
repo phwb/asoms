@@ -1,0 +1,41 @@
+<div class="navbar">
+    <div class="header__button back-button back-button_color_light">
+        <svg class="back-button__icon">
+            <use xlink:href="#icon_back-arrow"></use>
+        </svg>
+    </div>
+    <h1 class="header__h"></h1>
+</div>
+<div class="content">
+    <div class="page-content">
+        <form>
+            <div class="form-line">
+                <h1>Ваша оценка:</h1>
+                <select id="reviewRating" name="rating" title="">
+                    <option value="" selected disabled hidden></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <p>Вы можете дополнить свою оценку отзывом - расскажите, что вам хотелось бы улучшить в приожении:</p>
+            </div>
+            <div class="form-line">
+                <label class="label" for="reviewText">Ваш отзыв:</label>
+                <div class="form-line__controls">
+                    <textarea id="reviewText" class="input" name="review"></textarea>
+                </div>
+            </div>
+            <div class="form-line">
+                <label class="label" for="reviewContact">Ваш отзыв:</label>
+                <div class="form-line__controls">
+                    <input type="text" id="reviewContact" class="input" name="contact">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="toolbar">
+    <button class="button">Отправить</button>
+</div>

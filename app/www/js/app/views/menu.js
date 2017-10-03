@@ -38,6 +38,11 @@ define([
             selected: false
         },
         {
+            name: 'Оставить отзыв',
+            action: 'review',
+            selected: false
+        },
+        {
             name: 'Обновить',
             action: 'refresh',
             selected: false

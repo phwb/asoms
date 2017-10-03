@@ -28,7 +28,10 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
 }
 .panel-menu__i {
     display: block;
@@ -46,11 +49,8 @@
     position: relative;
     border-bottom-color: #dc0227;
 }
-.panel-menu__i.refresh {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.panel-menu__i.review {
+    margin-top: auto;
 }
 /* --- View --- */
 .view {

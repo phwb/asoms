@@ -1,0 +1,38 @@
+.br-theme-css-stars .br-widget {
+    height: 28px;
+    white-space: nowrap;
+}
+
+.br-theme-css-stars .br-widget a {
+    display: inline-block;
+    text-decoration: none;
+    width: 18px;
+    font-size: 23px;
+    margin: 0 6px;
+}
+
+.br-theme-css-stars .br-widget a:first-child {
+    margin-left: 0;
+}
+
+.br-theme-css-stars .br-widget a:after {
+    content: "\e800";
+    font-family: "fontello";
+    color: #c8c8cc;
+}
+
+.br-theme-css-stars .br-widget a.br-active:after {
+    color: #dc0227;
+}
+
+.br-theme-css-stars .br-widget a.br-selected:after {
+    color: #dc0227;
+}
+
+.br-theme-css-stars .br-widget .br-current-rating {
+    display: none;
+}
+
+.br-theme-css-stars .br-readonly a {
+    cursor: default;
+}

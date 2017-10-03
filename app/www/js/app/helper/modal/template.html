@@ -1,0 +1,10 @@
+<div class="modal">
+    <div class="modal-inner">
+        <div class="modal-title"><%= title %></div>
+        <div class="modal-text"><%= text %></div>
+    </div>
+    <div class="modal-buttons"><%= _.reduce(buttons, function (memo, button) {
+        return memo + '<span class="modal-button' + (button.bold ? ' modal-button-bold' : '') + '">' +
+                button.text + '</span>'
+        }, '') %></div>
+</div>
