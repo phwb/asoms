@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
-    del = require('del');
+    del = require('del'),
+    htmlreplace = require('gulp-html-replace');
 
 var dist = {
     root: '../../build/www/'
@@ -88,17 +89,23 @@ gulp.task('rjs', ['del'], function () {
         .pipe(gulp.dest(dist.root + 'js'));
 });
 
-gulp.task('static', ['del'], function (cb) {
-    gulp.src(['./img/*']).pipe(gulp.dest(dist.root + 'img'));
-    gulp.src(['./index.html']).pipe(gulp.dest(dist.root));
-    gulp.src(['./css/fonts/*']).pipe(gulp.dest(dist.root + 'css/fonts'));
-    gulp.src(['./js/svg.js']).pipe(gulp.dest(dist.root + 'js'));
+gulp.task('static', ['del'], function () {
+    var img = gulp.src(['./img/*']).pipe(gulp.dest(dist.root + 'img'));
+    var html = gulp.src(['./index.html'])
+        .pipe(htmlreplace({
+            css: './css/styles.min.css',
+            cordovaJS: './cordova.js',
+            js: './js/build.min.js'
+        }))
+        .pipe(gulp.dest(dist.root));
+    var fonts = gulp.src(['./css/fonts/*']).pipe(gulp.dest(dist.root + 'css/fonts'));
+    var svg = gulp.src(['./js/svg.js']).pipe(gulp.dest(dist.root + 'js'));
     // копируем ресурсы
-    gulp.src(['../res/icon/**/*']).pipe(gulp.dest('../../build/res/icon'));
-    gulp.src(['../res/screen/**/*']).pipe(gulp.dest('../../build/res/screen'));
-    gulp.src(['../config.xml']).pipe(gulp.dest('../../build'));
+    var icon = gulp.src(['../res/icon/**/*']).pipe(gulp.dest('../../build/res/icon'));
+    var screen = gulp.src(['../res/screen/**/*']).pipe(gulp.dest('../../build/res/screen'));
+    var config = gulp.src(['../config.xml']).pipe(gulp.dest('../../build'));
 
-    cb();
+    return Promise.all([img, html, fonts, svg, icon, screen, config])
 });
 
 gulp.task('css', ['del'], function () {
