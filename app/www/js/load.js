@@ -60,7 +60,8 @@ define([
         }
     });
 
-    ga.startTrackerWithId('UA-106162454-1', 10, function () {
+    // ugraweb account
+    ga.startTrackerWithId('UA-107530864-1', 10, function () {
         Backbone.Events.on('page:beforeAdd', function (pageId) {
             ga.trackView(pageId)
         })
