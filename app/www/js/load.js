@@ -11,7 +11,8 @@ define([
     'app/helper/formInit',
     // главные вьюшки
     'views/menu',
-    'views/main'
+    'views/main',
+    'app/helper/ga'
 ], function (
     device,
     FastClick,
@@ -24,7 +25,8 @@ define([
     formInit,
     // главные вьюшки
     menu,
-    pageMain
+    pageMain,
+    ga
 ) {
     'use strict';
 
@@ -58,17 +60,23 @@ define([
         }
     });
 
+    ga.startTrackerWithId('UA-106162454-1', 10, function () {
+        Backbone.Events.on('page:beforeAdd', function (pageId) {
+            ga.trackView(pageId)
+        })
+    })
+
+    document.addEventListener('backbutton', function (e) {
+        page.back();
+        e.preventDefault();
+    }, false);
+
     // page - вставляет в DOM страницы и анимирует их
     page.add(pageMain, function () {
         // после рендера главной страницы проверяем актуальность данных
         // и обновляем при необходимости
         checkResources();
     });
-
-    document.addEventListener('backbutton', function (e) {
-        page.back();
-        e.preventDefault();
-    }, false);
 
     // роутером выступает собыитя бекбона
     // для навигации лучше бы использоваль бекбоновский router,

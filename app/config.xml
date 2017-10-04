@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="ru.ugraweb.alfaoms" versionCode="000008" version="0.0.8">
+<widget xmlns="http://www.w3.org/ns/widgets" id="ru.ugraweb.alfaoms" versionCode="000008" version="0.0.9">
     <name>ОМС-АльфаСтрахование</name>
     <description>
         Приложение компании «АльфаСтрахование-ОМС» позволит вам:
@@ -19,6 +19,8 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^1.1.1" />
     <plugin name="cordova-plugin-statusbar" spec="https://github.com/apache/cordova-plugin-statusbar" source="git" />
     <plugin name="cordova-plugin-whitelist" spec="^1.2.0" />
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
+    <plugin name="cordova-plugin-code-push" spec="~1.9.8-beta" />
 
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />              <!-- all: possible values handset, tablet, or universal -->
@@ -56,6 +58,8 @@
         <icon src="res/icon/android/xhdpi.png"   density="xhdpi" />
         <icon src="res/icon/android/xxhdpi.png"  density="xxhdpi" />
         <icon src="res/icon/android/xxxhdpi.png" density="xxxhdpi" />
+
+        <preference name="CodePushDeploymentKey" value="x6tiMG7I9l6cfLsBRg96ioR0KNr64f3be069-199a-4c12-bdcb-11b67164f615" />
     </platform>
     <platform name="ios">
         <!-- iOS 8.0+ -->
@@ -92,6 +96,8 @@
         <splash src="res/screen/ios/Default-iphone.png"             width="320" height="480"/>
         <splash src="res/screen/ios/Default-Portrait@2x-ipad.png"   width="1536" height="2048"/>
         <splash src="res/screen/ios/Default-Portrait-ipad.png"      width="768" height="1024"/>
+
+        <preference name="CodePushDeploymentKey" value="xEwn-G1Mo-Hn3tteFQlz49jqqOm14f3be069-199a-4c12-bdcb-11b67164f615" />
     </platform>
 
     <access origin="*" />

@@ -2,18 +2,18 @@
 
 /* global require */
 var gulp = require('gulp'),
-    path = require('path'),
     rjs = require ('gulp-requirejs'),
     uglify = require('gulp-uglify'),
     minifyCSS = require('gulp-minify-css'),
     concat = require('gulp-concat'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    del = require('del');
 
 var dist = {
     root: '../../build/www/'
 };
 
-gulp.task('rjs', function () {
+gulp.task('rjs', ['del'], function () {
     return rjs({
         baseUrl: './js',
         name: 'init',
@@ -88,7 +88,7 @@ gulp.task('rjs', function () {
         .pipe(gulp.dest(dist.root + 'js'));
 });
 
-gulp.task('static', function (cb) {
+gulp.task('static', ['del'], function (cb) {
     gulp.src(['./img/*']).pipe(gulp.dest(dist.root + 'img'));
     gulp.src(['./index.html']).pipe(gulp.dest(dist.root));
     gulp.src(['./css/fonts/*']).pipe(gulp.dest(dist.root + 'css/fonts'));
@@ -101,7 +101,7 @@ gulp.task('static', function (cb) {
     cb();
 });
 
-gulp.task('css', function () {
+gulp.task('css', ['del'], function () {
     var paths = [
         './css/fonts.css',
         './css/animations/move.css',
@@ -118,5 +118,11 @@ gulp.task('css', function () {
         .pipe(concat('styles.min.css'))
         .pipe(gulp.dest(dist.root + 'css'));
 });
+
+gulp.task('del', function () {
+    return del('../../build', {
+        force: true
+    })
+})
 
 gulp.task('default', ['rjs', 'css', 'static']);
