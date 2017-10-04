@@ -11,7 +11,8 @@ define([
     'app/helper/formInit',
     // главные вьюшки
     'views/menu',
-    'views/main'
+    'views/main',
+    'app/helper/ga'
 ], function (
     device,
     FastClick,
@@ -24,7 +25,8 @@ define([
     formInit,
     // главные вьюшки
     menu,
-    pageMain
+    pageMain,
+    ga
 ) {
     'use strict';
 
@@ -58,23 +60,11 @@ define([
         }
     });
 
-    document.addEventListener('deviceready', function () {
-        if ('ga' in window) {
-            ga.startTrackerWithId('UA-106162454-1', 10, function () {
-                Backbone.Events.on('page:beforeAdd', function (pageId) {
-                    ga.trackView(pageId);
-                })
-
-                // клик по кнопке "вызов оператора"
-                $(document).on('click', '#sosPhone', function (e) {
-                    e.preventDefault();
-
-                    ga.trackEvent('Call', 'HotLine');
-                    location.href = this.getAttribute('href');
-                });
-            });
-        }
-    });
+    ga.startTrackerWithId('UA-106162454-1', 10, function () {
+        Backbone.Events.on('page:beforeAdd', function (pageId) {
+            ga.trackView(pageId)
+        })
+    })
 
     document.addEventListener('backbutton', function (e) {
         page.back();

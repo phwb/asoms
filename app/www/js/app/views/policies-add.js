@@ -6,14 +6,16 @@ define([
     'models/policy',
     'collections/policies',
     'views/page',
-    'text!templates/policies/add.html'
+    'text!templates/policies/add.html',
+    'app/helper/ga'
 ], function (
     Backbone,
     Form,
     Policy,
     Policies,
     PageView,
-    addPage
+    addPage,
+    ga
 ) {
     'use strict';
 
@@ -35,6 +37,7 @@ define([
 
                         if (!errors) {
                             if (isNew) {
+                                ga.trackEvent('Submit', 'Добавлен новый полис');
                                 Policies.add(this.model);
                             }
 
