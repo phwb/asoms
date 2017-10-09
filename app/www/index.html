@@ -9,6 +9,9 @@
                         'self'
                         data:
                         gap:
+                        'unsafe-eval'
+                        https://codepush.azurewebsites.net
+                        https://ssl.gstatic.com
                         https://alfastrahoms.ru
                         https://*.yandex.ru
                         http://*.yandex.ru
@@ -20,8 +23,9 @@
                    script-src
                         'self'
                         https://*.yandex.ru http://*.yandex.ru 'unsafe-inline' 'unsafe-eval';
+                    media-src *
                     ">
-
+    <!-- build:css -->
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="./css/animations/move.css">
     <link rel="stylesheet" href="./css/animations/fade.css">
@@ -29,10 +33,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/alfa.css">
     <link rel="stylesheet" href="./js/libs/jquery.barrating/css-stars.css">
+    <!-- endbuild -->
     <script src="./js/svg.js"></script>
-
-    <!--<link rel="stylesheet" href="./css/styles.min.css">
-    <script src="./js/svg.js"></script>-->
 </head>
 <body>
 <div id="svg-icons"></div>
@@ -60,7 +62,9 @@
 
 <div class="modal-overlay"></div>
 
-<!--<script src="./cordova.js"></script>-->
+<!-- build:cordovaJS -->
+<script></script>
+<!-- endbuild -->
 <script>
 (function () {
     var ready = {
@@ -76,7 +80,8 @@
     window.ready = ready;
 } ());
 </script>
+<!-- build:js -->
 <script data-main="./js/init" src="./js/libs/require/require.js"></script>
-<!--<script src="./js/build.min.js"></script>-->
+<!-- endbuild -->
 </body>
 </html>

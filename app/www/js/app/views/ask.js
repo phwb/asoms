@@ -4,14 +4,16 @@ define([
     'app/helper/notify',
     'models/ask',
     'views/page',
-    'text!templates/ask/index.html'
+    'text!templates/ask/index.html',
+    'app/helper/ga'
 ], function (
     Backbone,
     Form,
     notify,
     ask,
     PageView,
-    template
+    template,
+    ga
 ) {
     'use strict';
 
@@ -45,6 +47,7 @@ define([
                                             message = data.message;
                                         }
                                         notify.alert(message);
+                                        ga.trackEvent('Submit', 'Задан новый вопрос');
                                     })
                                     .fail(function (event) {
                                         var data = event.responseJSON || false;

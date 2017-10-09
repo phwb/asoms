@@ -2,18 +2,19 @@
 
 /* global require */
 var gulp = require('gulp'),
-    path = require('path'),
     rjs = require ('gulp-requirejs'),
     uglify = require('gulp-uglify'),
     minifyCSS = require('gulp-minify-css'),
     concat = require('gulp-concat'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    del = require('del'),
+    htmlreplace = require('gulp-html-replace');
 
 var dist = {
     root: '../../build/www/'
 };
 
-gulp.task('rjs', function () {
+gulp.task('rjs', ['del'], function () {
     return rjs({
         baseUrl: './js',
         name: 'init',
@@ -89,20 +90,26 @@ gulp.task('rjs', function () {
         .pipe(gulp.dest(dist.root + 'js'));
 });
 
-gulp.task('static', function (cb) {
-    gulp.src(['./img/*']).pipe(gulp.dest(dist.root + 'img'));
-    gulp.src(['./index.html']).pipe(gulp.dest(dist.root));
-    gulp.src(['./css/fonts/*']).pipe(gulp.dest(dist.root + 'css/fonts'));
-    gulp.src(['./js/svg.js']).pipe(gulp.dest(dist.root + 'js'));
+gulp.task('static', ['del'], function () {
+    var img = gulp.src(['./img/*']).pipe(gulp.dest(dist.root + 'img'));
+    var html = gulp.src(['./index.html'])
+        .pipe(htmlreplace({
+            css: './css/styles.min.css',
+            cordovaJS: './cordova.js',
+            js: './js/build.min.js'
+        }))
+        .pipe(gulp.dest(dist.root));
+    var fonts = gulp.src(['./css/fonts/*']).pipe(gulp.dest(dist.root + 'css/fonts'));
+    var svg = gulp.src(['./js/svg.js']).pipe(gulp.dest(dist.root + 'js'));
     // копируем ресурсы
-    gulp.src(['../res/icon/**/*']).pipe(gulp.dest('../../build/res/icon'));
-    gulp.src(['../res/screen/**/*']).pipe(gulp.dest('../../build/res/screen'));
-    gulp.src(['../config.xml']).pipe(gulp.dest('../../build'));
+    var icon = gulp.src(['../res/icon/**/*']).pipe(gulp.dest('../../build/res/icon'));
+    var screen = gulp.src(['../res/screen/**/*']).pipe(gulp.dest('../../build/res/screen'));
+    var config = gulp.src(['../config.xml']).pipe(gulp.dest('../../build'));
 
-    cb();
+    return Promise.all([img, html, fonts, svg, icon, screen, config])
 });
 
-gulp.task('css', function () {
+gulp.task('css', ['del'], function () {
     var paths = [
         './css/fonts.css',
         './css/animations/move.css',
@@ -120,5 +127,11 @@ gulp.task('css', function () {
         .pipe(concat('styles.min.css'))
         .pipe(gulp.dest(dist.root + 'css'));
 });
+
+gulp.task('del', function () {
+    return del('../../build', {
+        force: true
+    })
+})
 
 gulp.task('default', ['rjs', 'css', 'static']);

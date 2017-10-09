@@ -3,12 +3,14 @@ define([
     'backbone',
     'views/page',
     'text!templates/main/main.html',
-    'text!templates/main/menu-item.html'
+    'text!templates/main/menu-item.html',
+    'app/helper/ga'
 ], function (
     Backbone,
     PageView,
     mainPage,
-    menuItem
+    menuItem,
+    ga
 ) {
     'use strict';
 
@@ -53,6 +55,7 @@ define([
         click: function (e) {
             var action = this.model.get('action');
 
+            ga.trackEvent('Click', 'Пункт меню: ' + this.model.get('name'));
             Backbone.Events.trigger('action', action);
             Backbone.Events.trigger('action:' + action);
 
@@ -91,14 +94,17 @@ define([
                 'click #mainAbout': 'openAbout'
             },
             openPageRegion: function (e) {
+                ga.trackEvent('Click', 'Мой регион');
                 Backbone.Events.trigger('region:select');
                 e.preventDefault();
             },
             openSOS: function (e) {
+                ga.trackEvent('Click', 'Мой страховой представитель');
                 Backbone.Events.trigger('action:sos');
                 e.preventDefault();
             },
             openAbout: function (e) {
+                ga.trackEvent('Click', 'Задать вопрос');
                 Backbone.Events.trigger('action:ask');
                 e.preventDefault();
             },

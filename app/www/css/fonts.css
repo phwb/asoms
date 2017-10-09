@@ -1,26 +1,26 @@
 @font-face {
-  font-family: 'KievitPro';
-  src: url('fonts/subset-KievitPro-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'KievitPro';
+    src: url('fonts/subset-KievitPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
-  font-family: 'KievitPro';
-  src: url('fonts/subset-KievitPro-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'KievitPro';
+    src: url('fonts/subset-KievitPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
 }
 @font-face {
-  font-family: 'KievitPro';
-  src: url('fonts/subset-KievitPro-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
+    font-family: 'KievitPro';
+    src: url('fonts/subset-KievitPro-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
 }
 @font-face {
-  font-family: 'KievitPro-BoldItalic';
-  src: url('fonts/subset-KievitPro-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
+    font-family: 'KievitPro-BoldItalic';
+    src: url('fonts/subset-KievitPro-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
 }
 @font-face {
     font-family: 'fontello';

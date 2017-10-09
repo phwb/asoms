@@ -12,6 +12,8 @@ define([
     // главные вьюшки
     'views/menu',
     'views/main',
+    'app/helper/ga',
+    'views/main',
     'app/helper/modal/index',
     // то что не уходит в параметры
     'barrating'
@@ -28,6 +30,7 @@ define([
     // главные вьюшки
     menu,
     pageMain,
+    ga,
     modal
 ) {
     'use strict';
@@ -63,17 +66,24 @@ define([
         }
     });
 
+    // ugraweb account
+    ga.startTrackerWithId('UA-107530864-1', 10, function () {
+        Backbone.Events.on('page:beforeAdd', function (pageId) {
+            ga.trackView(pageId)
+        })
+    })
+
+    document.addEventListener('backbutton', function (e) {
+        page.back();
+        e.preventDefault();
+    }, false);
+
     // page - вставляет в DOM страницы и анимирует их
     page.add(pageMain, function () {
         // после рендера главной страницы проверяем актуальность данных
         // и обновляем при необходимости
         checkResources(false, modal.init);
     });
-
-    document.addEventListener('backbutton', function (e) {
-        page.back();
-        e.preventDefault();
-    }, false);
 
     // роутером выступает собыитя бекбона
     // для навигации лучше бы использоваль бекбоновский router,

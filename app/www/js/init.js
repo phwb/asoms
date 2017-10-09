@@ -46,9 +46,11 @@ require.config({
         });
 
         document.addEventListener('deviceready', function () {
-            if ('StatusBar' in window) {
-                StatusBar.hide();
-            }
+            var codePush = window.codePush
+            var StatusBar = window.StatusBar
+
+            StatusBar && StatusBar.hide()
+            codePush && codePush.sync()
         });
     }
 

@@ -1,11 +1,13 @@
 define([
     'backbone',
     'views/page',
-    'text!templates/main/sos.html'
+    'text!templates/main/sos.html',
+    'app/helper/ga'
 ], function (
     Backbone,
     PageView,
-    template
+    template,
+    ga
 ) {
     'use strict';
 
@@ -13,6 +15,15 @@ define([
     var pageView = new PageView({
         html: template,
         Page: {
+            events: {
+                'click #sosPhone': function (e) {
+                    e.preventDefault()
+
+                    ga.trackEvent('Click', 'Звонок на горячую линию')
+                    location.href = this.$('#sosPhone').attr('href')
+                }
+            },
+
             init: function () {
                 var $sos = this.$el.find('#sosPhone');
 
