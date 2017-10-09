@@ -273,7 +273,7 @@
    * An existing plugin can have its options changed simply by re calling .swipe(options)
    * @see TouchSwipe
    * @class
-   * @param {Mixed} method If the current DOMNode is a TouchSwipe object, and <code>method</code> is a TouchSwipe method, then
+   * @param {string|object} method If the current DOMNode is a TouchSwipe object, and <code>method</code> is a TouchSwipe method, then
    * the <code>method</code> is executed, and any following arguments are passed to the TouchSwipe method.
    * If <code>method</code> is an object, then the TouchSwipe class is instantiated on the current DOMNode, passing the
    * configuration properties defined in the object. See TouchSwipe
