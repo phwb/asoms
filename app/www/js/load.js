@@ -13,7 +13,6 @@ define([
     'views/menu',
     'views/main',
     'app/helper/ga',
-    'views/main',
     'app/helper/modal/index',
     // то что не уходит в параметры
     'barrating'
@@ -66,8 +65,8 @@ define([
         }
     });
 
-    // ugraweb account
-    ga.startTrackerWithId('UA-107530864-1', 10, function () {
+    // asoms account
+    ga.startTrackerWithId('UA-104339617-2', 10, function () {
         Backbone.Events.on('page:beforeAdd', function (pageId) {
             ga.trackView(pageId)
         })

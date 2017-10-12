@@ -33,8 +33,8 @@ define([
     var ReviewModel = Backbone.Model.extend({
         defaults: {
             rating: '',
-            review: '',
-            contact: ''
+            message: '',
+            contacts: ''
         },
 
         localStorage: new Store('ReviewModel')
@@ -65,8 +65,7 @@ define([
                 }),
 
                 events: {
-                    'change form': 'onFormChange',
-                    'submit form': 'onFormSubmit'
+                    'change form': 'onFormChange'
                 },
 
                 init: function () {
@@ -92,28 +91,27 @@ define([
                     return this
                 },
 
-                onFormChange: function (e) {
-                    var changedElement = $(e.target)
-                    var name = changedElement.attr('name')
-                    var value = changedElement.val()
+                formSubmit: function () {
+                    this.$('.has-error').removeClass('has-error')
 
-                    this.model
-                        .set(name, value)
-                        .save()
-                },
+                    var $rating = this.$('[name="rating"]')
+                    var rating = $rating.val()
 
-                onFormSubmit: function (e) {
-                    e.preventDefault()
+                    if (isEmpty(rating)) {
+                        $rating.closest('.form-line').addClass('has-error')
+
+                        return false
+                    }
 
                     var region = regions.getSelected()
                     var appData = $.param({
-                        os: device.os,
+                        operation_system: device.os,
                         region: region && region.get('name')
                     })
                     var formData = this.$('form').serialize()
                     var ajaxParams = {
                         type: 'POST',
-                        url: 'http://alfastrahoms.ru/api/reviews/',
+                        url: 'https://alfastrahoms.ru/api/reviews/',
                         data: appData + '&' + formData
                     }
 
@@ -123,6 +121,18 @@ define([
                         .done(bind(this.onAjaxSuccess, this))
                         .fail(bind(this.onAjaxFail, this))
                         .always(bind(this.onAjaxEnd, this))
+
+                    return true
+                },
+
+                onFormChange: function (e) {
+                    var changedElement = $(e.target)
+                    var name = changedElement.attr('name')
+                    var value = changedElement.val()
+
+                    this.model
+                        .set(name, value)
+                        .save()
                 },
 
                 onModelFetch: function () {
@@ -142,11 +152,16 @@ define([
                     })
                 },
 
-                onAjaxSuccess: function () {
+                onAjaxSuccess: function (data) {
+                    var message = 'Ваша оценка и отзыв отправлены.'
+
+                    if (data && data.message) {
+                        message = data.message
+                    }
+
                     this.$('.loader').html(
-                        '<div style="text-align:center">' +
-                        '  <h1>Спасибо!</h1>' +
-                        '  Ваша оценка и отзыв отправлены.' +
+                        '<div style="text-align:center;margin:0 5%">' +
+                        '  <h1>Спасибо!</h1>' + message +
                         '</div>'
                     )
 
@@ -156,7 +171,7 @@ define([
                     // очищаем модель
                     each(model.attributes, function (value, key) {
                         if (key !== idAttribute) {
-                            model.set('key', '')
+                            model.set(key, '')
                         }
                     })
 
@@ -215,7 +230,9 @@ define([
         var toolbarButton = toolbar.$('button')
 
         toolbar.on('submit', function () {
-            page.$('form').submit()
+            if (page.formSubmit() === false) {
+                return false
+            }
 
             toolbar.undelegateEvents()
             toolbarButton

@@ -842,3 +842,12 @@
     font-size: 18px;
     text-align: center;
 }
+
+.label_review {
+    display: block;
+    color: #000;
+    font-size: 18px;
+    text-transform: none;
+    margin-bottom: 8px;
+    font-weight: bold;
+}

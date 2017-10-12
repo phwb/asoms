@@ -34,7 +34,7 @@ define([
 
                             if (!errors) {
                                 var params = {
-                                    url: 'http://alfastrahoms.ru/api/addASKRequest/',
+                                    url: 'https://alfastrahoms.ru/api/addASKRequest/',
                                     data: this.model.toJSON(),
                                     method: 'post',
                                     dataType: 'json',

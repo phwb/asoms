@@ -61,7 +61,8 @@ gulp.task('rjs', ['del'], function () {
             'views/about': 'app/views/about',
             'views/sos': 'app/views/sos',
             'views/lk': 'app/views/lk',
-            'views/ask': 'app/views/ask'
+            'views/ask': 'app/views/ask',
+            'views/review': 'app/views/review'
         },
         include: [
             'requireLib',
@@ -79,7 +80,8 @@ gulp.task('rjs', ['del'], function () {
             'views/about',
             'views/sos',
             'views/lk',
-            'views/ask'
+            'views/ask',
+            'views/review'
         ],
         out: 'build.js'
     })

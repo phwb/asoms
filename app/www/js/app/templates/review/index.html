@@ -10,8 +10,8 @@
     <div class="page-content">
         <form>
             <div class="form-line">
-                <h1>Ваша оценка:</h1>
-                <select id="reviewRating" name="rating" title="">
+                <label for="reviewRating" class="label label_review">Ваша оценка:</label>
+                <select id="reviewRating" name="rating">
                     <option value="" selected disabled hidden></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -24,13 +24,13 @@
             <div class="form-line">
                 <label class="label" for="reviewText">Ваш отзыв:</label>
                 <div class="form-line__controls">
-                    <textarea id="reviewText" class="input" name="review"></textarea>
+                    <textarea id="reviewText" class="input" name="message"></textarea>
                 </div>
             </div>
             <div class="form-line">
-                <label class="label" for="reviewContact">Ваш отзыв:</label>
+                <label class="label" for="reviewContact">Ваши контакты:</label>
                 <div class="form-line__controls">
-                    <input type="text" id="reviewContact" class="input" name="contact">
+                    <input type="text" id="reviewContact" class="input" name="contacts">
                 </div>
             </div>
         </form>
