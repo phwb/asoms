@@ -67,8 +67,17 @@ define([
 
     // asoms account
     ga.startTrackerWithId('UA-104339617-2', 10, function () {
+        // трекаем главный экран
+        ga.trackView(pageMain.page.cid)
+        // трекаем все экраны
         Backbone.Events.on('page:beforeAdd', function (pageId) {
             ga.trackView(pageId)
+        })
+        // трекаем экран на кнопку "назад"
+        Backbone.Events.on('back', function (e) {
+            if (e && e.prev) {
+                ga.trackView(e.prev)
+            }
         })
     })
 

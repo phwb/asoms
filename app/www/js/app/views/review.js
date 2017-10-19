@@ -60,6 +60,8 @@ define([
             },
 
             Page: {
+                cid: C_ID,
+
                 model: new ReviewModel({
                     id: C_ID
                 }),
@@ -115,6 +117,10 @@ define([
                         data: appData + '&' + formData
                     }
 
+                    // if (!window.hasOwnProperty('cordova')) {
+                    //     ajaxParams.url = '/asoms/www/'
+                    // }
+
                     this.$content.html(loaderHTML)
 
                     ajax(ajaxParams)
@@ -152,12 +158,8 @@ define([
                     })
                 },
 
-                onAjaxSuccess: function (data) {
-                    var message = 'Ваша оценка и отзыв отправлены.'
-
-                    if (data && data.message) {
-                        message = data.message
-                    }
+                onAjaxSuccess: function () {
+                    var message = 'Ваша оценка и отзыв отправлены в работу<br>в службу поддержки.'
 
                     this.$('.loader').html(
                         '<div style="text-align:center;margin:0 5%">' +

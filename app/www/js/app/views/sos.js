@@ -19,7 +19,7 @@ define([
                 'click #sosPhone': function (e) {
                     e.preventDefault()
 
-                    ga.trackEvent('Click', 'Звонок на горячую линию')
+                    ga.trackEvent('button', 'push', 'push-representatives')
                     location.href = this.$('#sosPhone').attr('href')
                 }
             },

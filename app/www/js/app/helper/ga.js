@@ -1,9 +1,9 @@
 define([], function () {
     // заглушка для Google Analytics
     var ga = {
-        trackView: function () {},
-        trackEvent: function () {},
-        startTrackerWithId: function () {}
+        trackView: console.log,
+        trackEvent: console.log,
+        startTrackerWithId: console.log
     }
 
     return window.ga || ga
