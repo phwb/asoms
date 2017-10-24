@@ -69,6 +69,8 @@ define([
     ga.startTrackerWithId('UA-104339617-2', 10, function () {
         // трекаем главный экран
         ga.trackView(pageMain.page.cid)
+        // разрешить сбор демографических данных
+        ga.setAllowIDFACollection(true)
         // трекаем все экраны
         Backbone.Events.on('page:beforeAdd', function (pageId) {
             ga.trackView(pageId)

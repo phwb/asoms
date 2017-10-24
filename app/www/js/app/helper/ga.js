@@ -3,7 +3,8 @@ define([], function () {
     var ga = {
         trackView: console.log,
         trackEvent: console.log,
-        startTrackerWithId: console.log
+        startTrackerWithId: console.log,
+        setAllowIDFACollection: console.log
     }
 
     return window.ga || ga
